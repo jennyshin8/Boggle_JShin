@@ -43,6 +43,7 @@ public class Controller extends Application
   private Board board;
   private Score score = new Score(scoreView);
   private WordList wordList = new WordList(wordListView);
+  private AnswerWords answerWords;
   private GameTimer gameTimer = new GameTimer(this, gameTimerView);
 
   private int num;
@@ -114,6 +115,8 @@ public class Controller extends Application
 
     board = new Board(this.num);
     boardView = new BoardView(board.getBoggleArr());
+    answerWords = new AnswerWords(board.getBoggleArr());
+    for(int i = 0; i < this.num*this.num; i++) answerWords.findAnswer(answerWords.getNodes().getNode(i));
 
     setHeader();
     setBoard();
@@ -140,7 +143,7 @@ public class Controller extends Application
 
   private void setFinale()
   {
-    endingVBox = endingSceneView.getEndingSceneVBox(score.getTotalScore());
+    endingVBox = endingSceneView.getEndingSceneVBox(score.getTotalScore(), wordList.getAcceptedWord(), answerWords.getFound());
 
     vbox.getChildren().clear();
     vbox.getChildren().add(endingVBox);

@@ -50,8 +50,8 @@ public class GameTimer extends AnimationTimer
   {
     now = System.currentTimeMillis();
     cumulated = ((now - startTime) / 1000.0);
-    minute = 2 - (cumulated.intValue() / 60);
-//    minute = 0 - (cumulated.intValue() / 60);
+//    minute = 2 - (cumulated.intValue() / 60);
+    minute = 0 - (cumulated.intValue() / 60);
     seconds =  59 - (cumulated.intValue() % 60);
 
     time.set(cumulated.intValue());

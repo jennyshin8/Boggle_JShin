@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by jh on 9/23/17.
@@ -10,7 +9,8 @@ import java.util.Scanner;
 public class Dictionary
 {
   // Read .txt file save it to ArrayList<String> wordList
-  protected ArrayList<String> dictionary = new ArrayList<String>();
+  private ArrayList<String> dictionary = new ArrayList<String>();
+  private Hashtable<String, ArrayList<String>> hashtable = new Hashtable<>();
 
 
   protected Dictionary()
@@ -25,6 +25,20 @@ public class Dictionary
       while (line != null)
       {
         dictionary.add(line);
+        if(line.length()>2)
+        {
+          if(!hashtable.containsKey(line.substring(0,3)))
+          {
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add(line);
+
+            hashtable.put(line.substring(0,3), arrayList);
+          }
+          else
+          {
+            hashtable.get(line.substring(0,3)).add(line);
+          }
+        }
         line = reader.readLine();
       }
       reader.close();
@@ -35,8 +49,22 @@ public class Dictionary
       System.exit(0);
     }
   }
+  public boolean findWordHash(String word)
+  {
+//    for (Map.Entry<String, ArrayList<String>> entry : hashtable.entrySet()) {
+//      System.out.println("=================================================================");
+//      System.out.println("key   : " + entry.getKey() + "\nvalue : " + entry.getValue());
+//    }
+    if (word.length() >= 3)
+    {
+      if (hashtable.containsKey(word.substring(0, 3))) return hashtable.get(word.substring(0, 3)).contains(word);
+      else return false;
+    }
+    else return false;
 
-  protected boolean findWord(String findingWord)
+  }
+
+  public boolean findWord(String findingWord)
   {
     // Read input to find a word
 //    System.out.println("Enter your word: ");
@@ -60,7 +88,6 @@ public class Dictionary
     while (!found)
     {
 //      System.out.println(" -> " + dictionary.get(pivot) + " , pivot : " + pivot);
-
       for (int i = 0; i < idx; i++)
       {
         if(start == pivot || end == pivot)

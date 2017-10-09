@@ -43,6 +43,11 @@ public class WordList
     }
   }
 
+  public ArrayList<String> getAcceptedWord()
+  {
+    return this.accepted;
+  }
+
   public void resetWordList()
   {
     this.accepted.clear();
