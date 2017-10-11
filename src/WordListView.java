@@ -17,15 +17,16 @@ public class WordListView
     wordLbl = new Text();
     wordVal = new Text();
 
-    wordLbl.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
+    wordLbl.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
     wordLbl.setTextAlignment(TextAlignment.LEFT);
-    wordLbl.setWrappingWidth(Controller.WINDOW_WIDTH);
-    wordLbl.setText("Not Allowed");
+    wordLbl.setWrappingWidth(300);
+    wordLbl.setText("Unacceptable Input");
 
-    wordVal.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
+
+    wordVal.setFont(Font.font("Arial", FontWeight.BLACK, 16));
     wordVal.setTextAlignment(TextAlignment.LEFT);
-    wordVal.setWrappingWidth(Controller.WINDOW_WIDTH);
-    wordVal.setFill(Color.valueOf("#e60000"));
+    wordVal.setWrappingWidth(Controller.WINDOW_WIDTH - 50);
+    wordVal.setFill(Color.RED);
   }
 
   public void update(String wrongWord) { wordVal.setText(wordVal.getText() + " " + wrongWord); }
@@ -52,13 +53,6 @@ public class WordListView
     wordLbl.setTextAlignment(TextAlignment.CENTER);
     wordLbl.setFill(Color.valueOf("#0f54ad"));
     wordLbl.setText(msg);
-  }
-
-  public void setDefaultLbl()
-  {
-    wordLbl.setTextAlignment(TextAlignment.LEFT);
-    wordLbl.setFill(Color.valueOf("BLACK"));
-    wordLbl.setText("Not Allowed");
   }
 
   public void resetWordListView()

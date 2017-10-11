@@ -117,12 +117,16 @@ public class Controller extends Application
     boardView = new BoardView(board.getBoggleArr());
     answerWords = new AnswerWords(board.getBoggleArr());
     for(int i = 0; i < this.num*this.num; i++) answerWords.findAnswer(answerWords.getNodes().getNode(i));
+    score.setAnswerN(answerWords.getFoundSize());
 
     setHeader();
     setBoard();
     setFooter();
     alignVBox();
-
+/********
+ *
+ * setFooter changes the aligning
+ */
     gameTimer.start();
   }
 
@@ -170,6 +174,7 @@ public class Controller extends Application
       resetFooter();
       score.resetScore();
       wordList.resetWordList();
+      endingSceneView.resetAnswers();
     }
   }
 
@@ -177,10 +182,10 @@ public class Controller extends Application
   {
     headerLabel.getChildren().addAll(gameTimerView.getLabel(), scoreView.getLabel());
     headerValue.getChildren().addAll(gameTimerView.getValue(), scoreView.getValue());
-    headerLabel.setSpacing(360);
-    headerValue.setSpacing(360);
+    headerLabel.setSpacing(236);
+    headerValue.setSpacing(238);
     vbox.setMargin(headerLabel, new Insets(10, 10, 0, 13));
-    vbox.setMargin(headerValue, new Insets(0, 10, 10, 13));
+    vbox.setMargin(headerValue, new Insets(0, 0, 10, 30));
   }
 
   private void setBoard()
@@ -203,8 +208,8 @@ public class Controller extends Application
   {
     footerLabel.getChildren().addAll(wordListView.getLabel());
     footerValue.getChildren().addAll(wordListView.getValue());
-    vbox.setMargin(footerLabel, new Insets(10, 10, 0, 13));
-    vbox.setMargin(footerValue, new Insets(0, 10, 10, 13));
+    vbox.setMargin(footerLabel, new Insets(20, 10, 0, 30));
+    vbox.setMargin(footerValue, new Insets(0, 10, 10, 30));
   }
 
   private void resetHeader()
@@ -231,6 +236,7 @@ public class Controller extends Application
     }
     vbox.getChildren().add(footerLabel);
     vbox.getChildren().add(footerValue);
+
   }
 
   private void handleDetected(MouseEvent event)

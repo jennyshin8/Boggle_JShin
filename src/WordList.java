@@ -33,12 +33,10 @@ public class WordList
   {
     if (accepted.contains(input))
     {
-      //wordListView.warning("You've already picked this word!");
       return true;
     }
     else
     {
-      wordListView.setDefaultLbl();
       return false;
     }
   }

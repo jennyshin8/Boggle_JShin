@@ -37,17 +37,21 @@ public class AnswerWords extends Nodes
       }
       if (stack.size() > 2)
       {
-        if (dictionary.findWordHash(word.toLowerCase()))
+        if (dictionary.findWordHash(word.toLowerCase())==1)
         {
           if (!found.contains(word))
           {
-            System.out.println("We found " + word + " !");
+//            System.out.println("We found " + word + " !");
             found.add(word);
           }
         }
+        else if(dictionary.findWordHash(word.toLowerCase())==9)
+        {
+//          System.out.println("There is no " + word + " ... BUT!");
+        }
         else
         {
-          System.out.println("There is no " + word + " ...");
+//          System.out.println("There is no " + word + " ...");
           stack.pop();
           return;
         }
@@ -80,12 +84,6 @@ public class AnswerWords extends Nodes
 
   public ArrayList<String> getFound()
   {
-//    String[] anwser = new String[this.found.size()];
-//    for(int i = 0; i < this.found.size(); i++)
-//    {
-//      anwser[i] = this.found.get(i);
-//    }
-
     return this.found;
   }
 

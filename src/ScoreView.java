@@ -12,27 +12,28 @@ public class ScoreView
   private Text scoreLbl;
   private Text scoreVal;
 
-
   public ScoreView()
   {
     scoreLbl = new Text();
     scoreVal = new Text();
 
-    scoreLbl.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
+    scoreLbl.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
     scoreLbl.setTextAlignment(TextAlignment.CENTER);
-    scoreLbl.setWrappingWidth(55);
+    scoreLbl.setWrappingWidth(150);
     scoreLbl.setText("Score");
 
-    scoreVal.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
+    scoreVal.setFont(Font.font("Arial Red", FontWeight.BLACK, 18));
     scoreVal.setTextAlignment(TextAlignment.CENTER);
-    scoreVal.setWrappingWidth(55);
-    scoreVal.setText("0");
+    scoreVal.setWrappingWidth(150);
+    scoreVal.setText("0 (0 of 0)");
   }
 
-  public void update(int updatedScore)
+
+  public void update(int updatedScore, int acceptedN, int answerN)
   {
-    scoreVal.setText(Integer.toString(updatedScore));
+    scoreVal.setText(Integer.toString(updatedScore) + " (" + acceptedN + " of " + answerN + ")");
   }
+
 
   public Text getLabel()
   {
@@ -43,7 +44,6 @@ public class ScoreView
   {
     return this.scoreVal;
   }
-
 
   public void resetScoreView()
   {

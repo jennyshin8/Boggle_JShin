@@ -39,33 +39,33 @@ public class EndingSceneView
   public EndingSceneView()
   {
     finalScore.setFont(Font.font("Arial", FontWeight.BLACK, 30));
-    finalScore.setTextAlignment(TextAlignment.CENTER);
-    finalScore.setWrappingWidth(Controller.WINDOW_WIDTH);
-    finalScore.setText("Your final score is ");
+//    finalScore.setTextAlignment(TextAlignment.CENTER);
+    finalScore.setWrappingWidth(Controller.WINDOW_WIDTH-50);
+//    finalScore.setText("Final score is ");
 
     score.getChildren().add(finalScore);
 
 
-    answerDescR.setFont(Font.font("Arial", FontWeight.BLACK, 30));
-    answerDescR.setTextAlignment(TextAlignment.CENTER);
-    answerDescR.setWrappingWidth(Controller.WINDOW_WIDTH);
+    answerDescR.setFont(Font.font("Arial", FontWeight.BLACK, 24));
+//    answerDescR.setTextAlignment(TextAlignment.CENTER);
+    answerDescR.setWrappingWidth(Controller.WINDOW_WIDTH-50);
     answerDescR.setText("You've Got");
 
     answerRight.setFont(Font.font("Arial", FontWeight.BLACK, 16));
-    answerRight.setTextAlignment(TextAlignment.CENTER);
-    answerRight.setWrappingWidth(Controller.WINDOW_WIDTH);
+//    answerRight.setTextAlignment(TextAlignment.CENTER);
+    answerRight.setWrappingWidth(Controller.WINDOW_WIDTH-100);
     answerRight.setFill(Color.BLACK);
     answerRight.setText("");
 
 
-    answerDescM.setFont(Font.font("Arial", FontWeight.BLACK, 30));
-    answerDescM.setTextAlignment(TextAlignment.CENTER);
-    answerDescM.setWrappingWidth(Controller.WINDOW_WIDTH);
+    answerDescM.setFont(Font.font("Arial", FontWeight.BLACK, 24));
+//    answerDescM.setTextAlignment(TextAlignment.CENTER);
+    answerDescM.setWrappingWidth(Controller.WINDOW_WIDTH-50);
     answerDescM.setText("You've missed");
 
     answerMissed.setFont(Font.font("Arial", FontWeight.BLACK, 16));
-    answerMissed.setTextAlignment(TextAlignment.CENTER);
-    answerMissed.setWrappingWidth(Controller.WINDOW_WIDTH);
+//    answerMissed.setTextAlignment(TextAlignment.CENTER);
+    answerMissed.setWrappingWidth(Controller.WINDOW_WIDTH-100);
     answerMissed.setFill(Color.RED);
     answerMissed.setText("");
 
@@ -75,9 +75,9 @@ public class EndingSceneView
     answerM.getChildren().add(answerMissed);
 
     playMoreDesc.setFont(Font.font("Arial", FontWeight.BLACK, 30));
-    playMoreDesc.setTextAlignment(TextAlignment.CENTER);
-    playMoreDesc.setWrappingWidth(Controller.WINDOW_WIDTH);
-    playMoreDesc.setText("You Wanna Play More?");
+//    playMoreDesc.setTextAlignment(TextAlignment.CENTER);
+    playMoreDesc.setWrappingWidth(Controller.WINDOW_WIDTH-50);
+    playMoreDesc.setText("Wanna Play More?");
 
     playMore.getChildren().add(playMoreDesc);
 
@@ -92,66 +92,89 @@ public class EndingSceneView
     btns.getChildren().addAll(btnYes, btnNo);
     btns.setSpacing(10);
 
-    score.setPrefWidth(Controller.WINDOW_WIDTH);
+    score.setPrefWidth(Controller.WINDOW_WIDTH-50);
     score.setPrefHeight(45);
-    score.setAlignment(Pos.CENTER);
+    score.setAlignment(Pos.CENTER_LEFT);
 
-    answerDR.setPrefWidth(Controller.WINDOW_WIDTH);
-//    answerDR.setPrefHeight(45);
-    answerDR.setAlignment(Pos.CENTER);
+    answerDR.setPrefWidth(Controller.WINDOW_WIDTH-50);
+    answerDR.setAlignment(Pos.CENTER_LEFT);
 
-    answerR.setPrefWidth(Controller.WINDOW_WIDTH);
-//    answerR.setPrefHeight(45);
-    answerR.setAlignment(Pos.CENTER);
+    answerR.setPrefWidth(Controller.WINDOW_WIDTH-100);
+    answerR.setAlignment(Pos.CENTER_LEFT);
 
-    answerDM.setPrefWidth(Controller.WINDOW_WIDTH);
-//    answerDM.setPrefHeight(45);
-    answerDM.setAlignment(Pos.CENTER);
+    answerDM.setPrefWidth(Controller.WINDOW_WIDTH-50);
+    answerDM.setAlignment(Pos.CENTER_LEFT);
 
-    answerM.setPrefWidth(Controller.WINDOW_WIDTH);
-//    answerM.setPrefHeight(45);
-    answerM.setAlignment(Pos.CENTER);
+    answerM.setPrefWidth(Controller.WINDOW_WIDTH-100);
+    answerM.setAlignment(Pos.CENTER_LEFT);
 
-    playMore.setPrefWidth(Controller.WINDOW_WIDTH);
+    playMore.setPrefWidth(Controller.WINDOW_WIDTH-50);
     playMore.setPrefHeight(45);
-    playMore.setAlignment(Pos.CENTER);
+    playMore.setAlignment(Pos.CENTER_LEFT);
 
-    btns.setPrefWidth(Controller.WINDOW_WIDTH);
+    btns.setPrefWidth(Controller.WINDOW_WIDTH-50);
     btns.setPrefHeight(45);
-    btns.setAlignment(Pos.CENTER);
+    btns.setAlignment(Pos.CENTER_LEFT);
 
     vBox.getChildren().addAll(score, answerDR, answerR, answerDM, answerM, playMore, btns);
-    vBox.setMargin(score, new Insets(80, 0, 0, 0));
-    vBox.setMargin(answerDR, new Insets(15, 0, 0, 0));
-    vBox.setMargin(answerR, new Insets(5, 0, 0, 0));
-    vBox.setMargin(answerDM, new Insets(10, 0, 0, 0));
-    vBox.setMargin(answerM, new Insets(5, 0, 30, 0));
-    vBox.setMargin(btns, new Insets(0, 0, 7, 0));
+
   }
 
   public VBox getEndingSceneVBox(int score, ArrayList<String> userFound, ArrayList<String> answerWords)
   {
-    this.finalScore.setText("Your final score is " + Integer.toString(score));
+    this.finalScore.setText("Final score is " + Integer.toString(score));
 
+
+    int countRight = 0, countMissed = 0;
     for(int i = 0; i < answerWords.size(); i ++)
     {
       if(userFound.contains(answerWords.get(i)))
       {
-        answerRight.setText(answerRight.getText() + " " + answerWords.get(i));
+        countRight++;
+        if (countRight < 30) answerRight.setText(answerRight.getText() + " " + answerWords.get(i)); // 29
       }
       else
       {
-        answerMissed.setText(answerMissed.getText() + " " + answerWords.get(i));
+        countMissed++;
+        if (countMissed < 30) answerMissed.setText(answerMissed.getText() + " " + answerWords.get(i)); // 29
       }
     }
 
+    if (countRight >= 30)
+    {
+      if (countRight == 30) answerRight.setText(answerRight.getText() + "\n... MORE " + (countRight - 29) + " WORD!");
+      else answerRight.setText(answerRight.getText() + "\n... MORE " + (countRight - 29) + " WORDS!");
+    }
+    if (countMissed >= 30)
+    {
+      if (countMissed == 30) answerMissed.setText(answerMissed.getText() + "\n... MORE " + (countMissed - 29) + " WORD!");
+      else answerMissed.setText(answerMissed.getText() + "\n... MORE " + (countMissed - 29) + " WORDS!");
+    }
+    Double rightH = this.answerRight.getBoundsInParent().getHeight();
+    Double rightM = this.answerMissed.getBoundsInParent().getHeight();
+
+    Double val = (95 - (rightH+rightM)/2);
+    if (val < 10) val = 10.0;
+
+    vBox.setMargin(this.score, new Insets(val, 0, 20, 50));
+    vBox.setMargin(answerDR, new Insets(15, 0, 0, 50));
+    vBox.setMargin(answerR, new Insets(0, 0, 0, 50));
+    vBox.setMargin(answerDM, new Insets(5, 0, 0, 50));
+    vBox.setMargin(answerM, new Insets(5, 0, 0, 50));
+    vBox.setMargin(playMore, new Insets(30, 0, 5, 50));
+    vBox.setMargin(btns, new Insets(0, 0, 0, 50));
     return this.vBox;
   }
 
   public Button[] getBtnArr()
   {
     Button[] btnArr = {btnYes, btnNo};
-
     return btnArr;
+  }
+
+  public void resetAnswers()
+  {
+    this.answerRight.setText("");
+    this.answerMissed.setText("");
   }
 }

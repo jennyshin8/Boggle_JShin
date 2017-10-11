@@ -37,7 +37,7 @@ public class Nodes
   {
     for(int i = 0; i < n*n; i++)
     {
-      if(i<n)
+      if(i < n)
       {
         if(i%n == 0)
         {

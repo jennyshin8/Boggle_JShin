@@ -49,19 +49,29 @@ public class Dictionary
       System.exit(0);
     }
   }
-  public boolean findWordHash(String word)
+  public int findWordHash(String word)
   {
-//    for (Map.Entry<String, ArrayList<String>> entry : hashtable.entrySet()) {
-//      System.out.println("=================================================================");
-//      System.out.println("key   : " + entry.getKey() + "\nvalue : " + entry.getValue());
-//    }
-    if (word.length() >= 3)
+    if(word.length()>=3)
     {
-      if (hashtable.containsKey(word.substring(0, 3))) return hashtable.get(word.substring(0, 3)).contains(word);
-      else return false;
-    }
-    else return false;
+      if (hashtable.containsKey(word.substring(0, 3)))
+      {
+        if (hashtable.get(word.substring(0, 3)).contains(word)) return 1;
+        else
+        {
+          for (int i = 0; i < hashtable.get(word.substring(0, 3)).size(); i++)
+          {
+            if (hashtable.get(word.substring(0,3)).get(i).length() > word.length())
+            {
+              if (hashtable.get(word.substring(0, 3)).get(i).substring(0, word.length()).equals(word)) return 9;
+            }
+          }
+          return 0;
+        }
+      }
 
+      else return 0;
+    }
+    else return 0;
   }
 
   public boolean findWord(String findingWord)
@@ -100,8 +110,8 @@ public class Dictionary
         {
           if (i == idx - 1 & idx == dictionary.get(pivot).length() & idx == findingWord.length())
           {
-            System.out.println("****************************");
-            System.out.println("wordList (" + (pivot+1)+ ") " + dictionary.get(pivot));
+//            System.out.println("****************************");
+//            System.out.println("wordList (" + (pivot+1)+ ") " + dictionary.get(pivot));
             found = true;
             break;
           }
@@ -132,7 +142,7 @@ public class Dictionary
       // if there is no word that user is looking for,
       if (noValue)
       {
-        System.out.println("Sorry but no " + findingWord + " in dictionary...\n");
+//        System.out.println("Sorry but no " + findingWord + " in dictionary...\n");
         break;
       }
     }

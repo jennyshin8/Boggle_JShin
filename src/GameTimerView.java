@@ -17,14 +17,14 @@ public class GameTimerView
     timerLbl = new Text();
     timerVal = new Text();
 
-    timerLbl.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
+    timerLbl.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
     timerLbl.setTextAlignment(TextAlignment.CENTER);
-    timerLbl.setWrappingWidth(55);
+    timerLbl.setWrappingWidth(90);
     timerLbl.setText("Timer");
 
     timerVal.setFont(Font.font("Arial Red", FontWeight.BLACK, 20));
     timerVal.setTextAlignment(TextAlignment.LEFT);
-    timerVal.setWrappingWidth(55);
+    timerVal.setWrappingWidth(70);
     timerVal.setText("3:00");
   }
 
