@@ -38,7 +38,7 @@ public class BoardView
       for (int c = 0; c < n; c++)
       {
         Button btn = new Button();
-        btn.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resource/" + playboard[r][c] + ".png"))));
+        btn.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("resource/" + playboard[r][c].toLowerCase() + ".png"))));
         btn.setId(playboard[r][c]);
         btn.setPadding(new Insets(2, 2, 2, 2));
 
