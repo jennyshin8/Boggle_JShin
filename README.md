@@ -1,4 +1,5 @@
 # Boggle
+&#45; UNM CS351 Fall Project #2<br>
 &#45; Last updated on 10/12/2017<br>
 &#45; Made by Jaehee Shin (Individual Project)
 <br>
