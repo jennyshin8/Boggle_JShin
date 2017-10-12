@@ -19,5 +19,5 @@ Find out a right word and drag it.
 &#8226; There is no penalty for rejected words.<br>
 &#8226; Distinct words can use the same dice in the tray, e.g., “home,” “homes,” and “homed” might all appear in the tray.<br>
 &#8226; Traversing is not allowed. It means one character can't be used several times to complete a word.
-<br>
-These rules are originally written by <a href="http://www.cs.unm.edu/directory/faculty-profiles/gruia-catalin-roman.html">Dr.Roman</a> in UNM
+<br><br>
+_These rules are originally written by <a href="http://www.cs.unm.edu/directory/faculty-profiles/gruia-catalin-roman.html">Dr.Roman</a> in UNM_
