@@ -7,7 +7,8 @@
 
 ## How to Play?
 
-Find out a right word and drag it.
+Find out a right word and drag it.<br>
+Download and Excute this -> <a href="https://github.com/jennyshin8/Boggle_JShin/blob/master/Boggle_JShin.jar">Boggle_JShin.jar</a>
 <br>
 <br>
 ## Rules
