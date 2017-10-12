@@ -20,13 +20,15 @@ public class WordList
   public void addAcceptedWord(String rightWord)
   {
     accepted.add(rightWord);
-    //wordListView.encourage(rightWord);
+    if(accepted.size()==33) wordListView.resetValid();
+    wordListView.updateValid(rightWord);
   }
 
   public void addWrongWord(String wrongWord)
   {
     notAccepted.add(wrongWord);
-    wordListView.update(wrongWord);
+    if(notAccepted.size()==33) wordListView.resetWrong();
+    wordListView.updateWrong(wrongWord);
   }
 
   public boolean isDuplicate(String input)

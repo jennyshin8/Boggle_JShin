@@ -30,7 +30,10 @@ public class Controller extends Application
   private HBox headerValue = new HBox();
   private HBox[] boardRows;
   private HBox footerLabel = new HBox();
-  private VBox footerValue = new VBox();
+  private HBox footerValue = new HBox();
+  private VBox footerValueWrong = new VBox();
+  private VBox footerValueValid = new VBox();
+//  private VBox footerValue = new VBox();
 
   private StartSceneView startSceneView;
   private BoardView boardView;
@@ -206,10 +209,13 @@ public class Controller extends Application
 
   private void setFooter()
   {
-    footerLabel.getChildren().addAll(wordListView.getLabel());
-    footerValue.getChildren().addAll(wordListView.getValue());
+    footerLabel.getChildren().addAll(wordListView.getLabelWrong(), wordListView.getLabelValid());
+    footerValueWrong.getChildren().add(wordListView.getValueWrong());
+    footerValueValid.getChildren().add(wordListView.getValueValid());
+    footerValue.getChildren().addAll(footerValueWrong, footerValueValid);
     vbox.setMargin(footerLabel, new Insets(20, 10, 0, 30));
     vbox.setMargin(footerValue, new Insets(0, 10, 10, 30));
+    footerValue.setSpacing(10);
   }
 
   private void resetHeader()
@@ -221,6 +227,8 @@ public class Controller extends Application
   private void resetFooter()
   {
     footerLabel.getChildren().clear();
+    footerValueWrong.getChildren().clear();
+    footerValueValid.getChildren().clear();
     footerValue.getChildren().clear();
   }
 

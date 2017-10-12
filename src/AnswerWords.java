@@ -41,7 +41,7 @@ public class AnswerWords extends Nodes
         {
           if (!found.contains(word))
           {
-//            System.out.println("We found " + word + " !");
+            System.out.println("We found " + word + " !");
             found.add(word);
           }
         }

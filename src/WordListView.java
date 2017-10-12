@@ -9,54 +9,87 @@ import javafx.scene.text.TextAlignment;
  */
 public class WordListView
 {
-  private Text wordLbl;
-  private Text wordVal;
+  private Text wordLblWrong;
+  private Text wordValWrong;
+
+  private Text wordLblValid;
+  private Text wordValValid;
+
 
   public WordListView()
   {
-    wordLbl = new Text();
-    wordVal = new Text();
+    wordLblWrong = new Text();
+    wordValWrong = new Text();
 
-    wordLbl.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 24));
-    wordLbl.setTextAlignment(TextAlignment.LEFT);
-    wordLbl.setWrappingWidth(300);
-    wordLbl.setText("Unacceptable Input");
+    wordLblWrong.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 22));
+    wordLblWrong.setTextAlignment(TextAlignment.CENTER);
+    wordLblWrong.setWrappingWidth(220);
+    wordLblWrong.setText("Invalid Input");
 
 
-    wordVal.setFont(Font.font("Arial", FontWeight.BLACK, 16));
-    wordVal.setTextAlignment(TextAlignment.LEFT);
-    wordVal.setWrappingWidth(Controller.WINDOW_WIDTH - 50);
-    wordVal.setFill(Color.RED);
+    wordValWrong.setFont(Font.font("Arial", FontWeight.BLACK, 16));
+    wordValWrong.setTextAlignment(TextAlignment.LEFT);
+    wordValWrong.setWrappingWidth(220);
+    wordValWrong.setFill(Color.RED);
+
+
+    wordLblValid = new Text();
+    wordValValid = new Text();
+
+    wordLblValid.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 22));
+    wordLblValid.setTextAlignment(TextAlignment.CENTER);
+    wordLblValid.setWrappingWidth(220);
+    wordLblValid.setText("Valid Input");
+
+
+    wordValValid.setFont(Font.font("Arial", FontWeight.BLACK, 16));
+    wordValValid.setTextAlignment(TextAlignment.LEFT);
+    wordValValid.setWrappingWidth(220);
+    wordValValid.setFill(Color.GREEN);
   }
 
-  public void update(String wrongWord) { wordVal.setText(wordVal.getText() + " " + wrongWord); }
+  public void updateWrong(String wrongWord) { wordValWrong.setText(wordValWrong.getText() + " " + wrongWord); }
 
-  public Text getLabel()
+  public void updateValid(String validWord) { wordValValid.setText(wordValValid.getText() + " " + validWord); }
+
+  public void resetWrong() { wordValWrong.setText(""); }
+
+  public void resetValid() { wordValValid.setText(""); }
+
+  public Text getLabelWrong()
   {
-    return this.wordLbl;
+    return this.wordLblWrong;
   }
 
-  public Text getValue()
+  public Text getValueWrong()
   {
-    return this.wordVal;
+    return this.wordValWrong;
   }
 
-  public void warning(String msg)
+  public Text getLabelValid()
   {
-    wordLbl.setTextAlignment(TextAlignment.CENTER);
-    wordLbl.setFill(Color.valueOf("#e60000"));
-    wordLbl.setText(msg);
+    return this.wordLblValid;
   }
 
-  public void encourage(String msg)
-  {
-    wordLbl.setTextAlignment(TextAlignment.CENTER);
-    wordLbl.setFill(Color.valueOf("#0f54ad"));
-    wordLbl.setText(msg);
-  }
+  public Text getValueValid() { return this.wordValValid; }
+
+//  public void warning(String msg)
+//  {
+//    wordLbl.setTextAlignment(TextAlignment.CENTER);
+//    wordLbl.setFill(Color.valueOf("#e60000"));
+//    wordLbl.setText(msg);
+//  }
+//
+//  public void encourage(String msg)
+//  {
+//    wordLbl.setTextAlignment(TextAlignment.CENTER);
+//    wordLbl.setFill(Color.valueOf("#0f54ad"));
+//    wordLbl.setText(msg);
+//  }
 
   public void resetWordListView()
   {
-    this.wordVal.setText("");
+    this.wordValWrong.setText("");
+    this.wordValValid.setText("");
   }
 }
